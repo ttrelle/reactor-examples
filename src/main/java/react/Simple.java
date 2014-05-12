@@ -15,7 +15,7 @@ import reactor.event.Event;
  */
 public class Simple {
 
-	private static final int REPEAT_COUNT = 100;
+	private static final int REPEAT_COUNT = 1;
 	
 	private static final String[] PAGES = new String[]{ 
 		"Reactive_programming", 
