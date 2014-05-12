@@ -12,7 +12,7 @@ import reactor.event.Event;
 import reactor.function.Consumer;
 
 /**
- * Download page from Wikipedia.
+ * Downloads a given page from Wikipedia.
  * 
  * @author Tobias Trelle
  */
@@ -20,10 +20,16 @@ public class WikipediaDonwloader implements Consumer<Event<String>> {
 
 	private static final String BASE_URL = "http://en.wikipedia.org/wiki/";
 	
+	private static final String PAGES_FOLDER = "target/pages";
+	
 	private CountDownLatch latch;
+	
+	private File pagesRoot;
 	
 	public WikipediaDonwloader(CountDownLatch latch) {
 		this.latch = latch;
+		pagesRoot = new File( PAGES_FOLDER );
+		pagesRoot.mkdirs();
 	}
 
 	@Override
@@ -32,7 +38,7 @@ public class WikipediaDonwloader implements Consumer<Event<String>> {
 		
 		try(
 				InputStream in = new URL( BASE_URL + page ).openStream(); 
-				OutputStream out = new FileOutputStream( new File( page + ".html")) 
+				OutputStream out = new FileOutputStream( new File( pagesRoot, page + ".html")) 
 		) {
 			int b;
 			while ( (b = in.read()) != -1 ) {
