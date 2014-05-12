@@ -16,7 +16,7 @@ import reactor.function.Consumer;
  * 
  * @author Tobias Trelle
  */
-public class WikipediaDonwloader implements Consumer<Event<String>> {
+public class WikipediaDownloader implements Consumer<Event<String>> {
 
 	private static final String BASE_URL = "http://en.wikipedia.org/wiki/";
 	
@@ -26,7 +26,7 @@ public class WikipediaDonwloader implements Consumer<Event<String>> {
 	
 	private File pagesRoot;
 	
-	public WikipediaDonwloader(CountDownLatch latch) {
+	public WikipediaDownloader(CountDownLatch latch) {
 		this.latch = latch;
 		pagesRoot = new File( PAGES_FOLDER );
 		pagesRoot.mkdirs();

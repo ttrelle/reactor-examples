@@ -37,7 +37,7 @@ public class Simple {
 				.get();
 	
 		// Register Consumer
-		r.on( $("download"), new WikipediaDonwloader(latch));
+		r.on( $("download"), new WikipediaDownloader(latch));
 	
 		long start = now();
 		
